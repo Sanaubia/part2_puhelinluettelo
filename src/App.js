@@ -1,8 +1,7 @@
-
-    
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import addNew from './components/AddNew'
 import Person from './components/Person'
+import axios from 'axios'
 
 
 
@@ -12,6 +11,17 @@ const App = (props) => {
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [ newFilter, setNewFilter ] = useState('')
+
+  useEffect(() => {
+    console.log('effect')
+    axios
+      .get('http://localhost:3001/persons')
+      .then(response =>{
+        console.log('promise fulfilled')
+        setPersons(response.data)
+      })
+  }, [])
+  console.log('render', persons.length, 'persons')
 
   
   const rows = () => persons.filter(person =>{
