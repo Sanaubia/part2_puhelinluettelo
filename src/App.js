@@ -77,11 +77,24 @@ const App = (props) => {
         number: newNumber
       }
 
+
+      axios
+        .post('http://localhost:3001/persons', noteObject)
+        .then(response =>{
+          setPersons(persons.concat(response.data))
+          setNewName('')
+          setNewNumber('')
+        })
+
+      /*
+     
+
+
+      
       setPersons(persons.concat(noteObject))
       console.log('Button clicked', event.target)
-      setNewName('')
-      setNewNumber('')
-
+      */
+  
     }
   }
 
