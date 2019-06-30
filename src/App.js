@@ -5,9 +5,11 @@ import axios from 'axios'
 
 
 
+
+
 const App = (props) => {
 
-  const [ persons, setPersons] = useState(props.persons)
+  const [ persons, setPersons] = useState([])
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [ newFilter, setNewFilter ] = useState('')
